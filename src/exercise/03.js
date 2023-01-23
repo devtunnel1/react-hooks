@@ -19,7 +19,7 @@ function FavoriteAnimal({ animal, onAnimalChange }) {
       <input
         id="animal"
         value={animal}
-        onChange={event => onAnimalChange(event)}
+        onChange={onAnimalChange}
       />
     </div>
   )
