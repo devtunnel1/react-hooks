@@ -6,12 +6,12 @@ import * as React from 'react'
 function Board() {
   const [squares, setSquares] = React.useState(Array(9).fill(null))
 
-  let nextValue = calculateNextValue(squares)
-  let winner = calculateWinner(squares)
-  let status = calculateStatus(winner, squares, nextValue)
+  const nextValue = calculateNextValue(squares)
+  const winner = calculateWinner(squares)
+  const status = calculateStatus(winner, squares, nextValue)
 
   function selectSquare(square) {
-    if (winner || squares[square] !== null) return
+    if (winner || squares[square]) return
 
     const squaresCopy = [...squares]
     squaresCopy[square] = nextValue
