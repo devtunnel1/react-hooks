@@ -27,6 +27,7 @@ function PokemonInfo({pokemonName}) {
   //   3. pokemon: <PokemonDataView pokemon={pokemon} />
 
   React.useEffect(() => {
+    if (!pokemonName) return
     setPokemon(null)
 
     fetchPokemon(pokemonName).then(pokemonData => {
@@ -34,13 +35,11 @@ function PokemonInfo({pokemonName}) {
     })
   }, [pokemonName])
 
-  if (!pokemonName) return 'Submit a pokemon'
-
-  if (pokemonName && !pokemon) {
+  if (!pokemonName) {
+    return 'Submit a pokemon'
+  } else if (!pokemon) {
     return <PokemonInfoFallback name={pokemonName} />
-  }
-
-  if (pokemon) {
+  } else {
     return <PokemonDataView pokemon={pokemon} />
   }
 }
