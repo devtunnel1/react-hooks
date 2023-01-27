@@ -10,11 +10,11 @@ function PokemonInfo({pokemonName}) {
 
   React.useEffect(() => {
     if (!pokemonName) return
+    setError(null)
     setPokemon(null)
 
     fetchPokemon(pokemonName).then(
       pokemonData => {
-        setError(null)
         setPokemon(pokemonData)
       },
       error => setError(error)
